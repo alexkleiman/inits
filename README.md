@@ -1,4 +1,3 @@
 dotfiles
 ========
-
-These are my settings and configurations for a variety of applications that I use.
+These are init files for various applications that I frequently use.
