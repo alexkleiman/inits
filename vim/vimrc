@@ -18,12 +18,12 @@ set nocompatible
 execute pathogen#infect()
 
 "solarized
-set background=dark
+"set background=dark
 "let g:solarized_termcolors=256
 "colorscheme solarized
 
 "colorscheme
-colorscheme torte
+colorscheme delek
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -108,5 +108,5 @@ set indentkeys=0{,0},0),:,0#,!^F,!<Tab>,o,O,e
 set cinkeys=0{,0},0),:,0#,!^F,!<Tab>,o,O,e
 
 " good tab completion
-set wildmode=longest,list,full
+set wildmode=longest,full
 set wildmenu
