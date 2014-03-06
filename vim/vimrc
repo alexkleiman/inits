@@ -17,23 +17,29 @@ set nocompatible
 "pathogen
 execute pathogen#infect()
 
+" turn on 256 colors
+"set t_Co=256
+
+"syntax highlighting
+syntax enable
+
 "solarized
-"set background=dark
+set background=dark
 "let g:solarized_termcolors=256
-"colorscheme solarized
+colorscheme solarized
 
 "colorscheme
-colorscheme delek
+"colorscheme delek
+"hi Comment ctermfg=darkgrey
+"hi String ctermfg=red
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" turn on 256 colors
-set t_Co=256
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
-syntax on
+"syntax on
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
@@ -59,6 +65,28 @@ inoremap jj <Esc>
 " leader as comma
 let mapleader=","
 
+" toggle cursor line highlighting
+function! ToggleCursorLine()
+    if &cursorline
+        set nocursorline
+    else
+        set cursorline
+    endif
+endfunction
+
+:nnoremap <Leader>; :call ToggleCursorLine() <CR>
+
+" toggle relative linenumbers
+function! ToggleRelativenumber()
+    if &relativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunction
+
+:nnoremap <Leader>r :call ToggleRelativenumber() <CR>
+
 " jk = <Esc>:w<Return>
 " inoremap jk <Esc>:w<Return>
 
@@ -72,10 +100,12 @@ set smartcase          " Do smart case matching
 set incsearch          " Incremental search
 set autowrite          " Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
-set mouse=a            " Enable mouse usage (all modes) in terminals
 
-"line numbers
-set number
+"turn on filetype plugins
+filetype plugin on
+
+"relative line numbers
+set relativenumber
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -93,6 +123,8 @@ set ruler
 " Enable mouse use in all modes
 set mouse=a
 
+" Make sure mouse clicking always works
+set ttymouse=xterm
 "auto save
 set autowrite
 
@@ -110,3 +142,6 @@ set cinkeys=0{,0},0),:,0#,!^F,!<Tab>,o,O,e
 " good tab completion
 set wildmode=longest,full
 set wildmenu
+
+"syntasic stuff for weenix
+let g:syntastic_c_checkers = ['make']

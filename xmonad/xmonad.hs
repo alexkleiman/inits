@@ -9,7 +9,7 @@ import System.IO
 import Data.Maybe
 import XMonad.Actions.WithAll
 
-myWorkspaces = ["Internet", "Scholarly Internet", "Code", "Writing", "Readings", "Utils", "VMs", "devil spawn", "minimize"]
+myWorkspaces = ["Code1", "Code2", "CodeHelp", "Internet", "ConfigHelp", "Utils", "VMs", "devil spawn", "minimize"]
 
 
 myManageHook = composeAll . concat $
@@ -20,7 +20,7 @@ myManageHook = composeAll . concat $
       ]
       , [ className =? util  --> doShift "Utils" | util <- utilClass ]
       , [ className =? devilSpawn --> doShift "devil spawn" | devilSpawn <- devilClass ]
-      , [ className =? vm --> doFloat | vm <- vmClass ]
+      , [ className =? vm --> doShift "Code1" | vm <- vmClass ]
     ]
     where
         webClass = ["Firefox", "Iceweasel", "Google-chrome"]
@@ -45,10 +45,10 @@ main = do
                       , ppTitle = xmobarColor "green" "" . shorten 50
                     }
 --        , modMask = mod3Mask --change to whatever you want
-        , terminal = "konsole" --use konsole for terminal
+        , terminal = "xfce4-terminal" --use xfce4-terminal for terminal
         , workspaces = myWorkspaces
       } `additionalKeys`
-      [ ((mod1Mask .|. shiftMask, xK_l), spawn "xlock")
+      [ ((mod1Mask .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
         , ((mod1Mask .|. shiftMask, xK_g), spawn "/contrib/bin/google-chrome")
 --        , ((mod4Mask .|. shiftMask .|. mod1Mask, xK_c), W.filter(\x -> isJust(W.peek) && fromJust(W.peek) == x))
 --        ,  ((mod3Mask .|. shiftMask, xK_x), killAll)
