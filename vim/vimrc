@@ -145,3 +145,7 @@ set wildmenu
 
 "syntasic stuff for weenix
 let g:syntastic_c_checkers = ['make']
+let g:syntastic_latex_checkers = ['make']
+
+" good tabbing for latex
+let g:tex_flavor='latex'
