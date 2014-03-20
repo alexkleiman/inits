@@ -48,7 +48,7 @@ main = do
         , terminal = "xfce4-terminal" --use xfce4-terminal for terminal
         , workspaces = myWorkspaces
       } `additionalKeys`
-      [ ((mod1Mask .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
+      [ ((mod1Mask .|. shiftMask, xK_l), spawn "xlock")
         , ((mod1Mask .|. shiftMask, xK_g), spawn "/contrib/bin/google-chrome")
 --        , ((mod4Mask .|. shiftMask .|. mod1Mask, xK_c), W.filter(\x -> isJust(W.peek) && fromJust(W.peek) == x))
 --        ,  ((mod3Mask .|. shiftMask, xK_x), killAll)
