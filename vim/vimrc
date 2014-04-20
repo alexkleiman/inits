@@ -145,7 +145,19 @@ set wildmenu
 
 "syntasic stuff for weenix
 let g:syntastic_c_checkers = ['make']
-let g:syntastic_latex_checkers = ['make']
+"let g:syntastic_latex_checkers = ['make']
+let g:syntastic_disabled_filetypes = ['latex']
 
 " good tabbing for latex
 let g:tex_flavor='latex'
+
+function CopyLine(relnum)
+    relnum<PageUp>
+    yy
+    relnum<PageDown>
+    <PageUp>
+    p
+endfunction
+
+" file specific things
+autocmd BufNewFile,BufRead *.tex set textwidth=80

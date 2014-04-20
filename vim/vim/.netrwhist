@@ -1,6 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/gpfs/main/home/arkleima/course/cs169/weenix/kernel'
-let g:netrw_dirhist_2='/gpfs/main/course/cs018/content/labs/06parsing/java/text'
-let g:netrw_dirhist_3='/gpfs/main/home/arkleima/course/cs169/weenix/kernel/test/vfstest'
-let g:netrw_dirhist_4='/gpfs/main/home/arkleima/course/cs166/file-transfer'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/gpfs/main/course/cs018/admin/grades/ta/arkleima/hw05/fileoFBPw8'
+let g:netrw_dirhist_2='/gpfs/main/course/cs018/admin/grades/ta/arkleima/hw05'
+let g:netrw_dirhist_3='/gpfs/main/course/cs018/admin/grades/ta/arkleima/hw05/fileoQIswo'
+let g:netrw_dirhist_4='/gpfs/main/course/cs018/admin/grades/ta/arkleima/hw05'
+let g:netrw_dirhist_5='/gpfs/main/course/cs018/admin/grades/ta/arkleima/hw05/filexg8LZC'
+let g:netrw_dirhist_6='/gpfs/main/home/arkleima/course/cs169/weenix/kernel/include/vm'
