@@ -161,3 +161,5 @@ endfunction
 
 " file specific things
 autocmd BufNewFile,BufRead *.tex set textwidth=80
+autocmd BufNewFile,BufRead *.txt set textwidth=80
+autocmd BufNewFile,BufRead README set textwidth=80
