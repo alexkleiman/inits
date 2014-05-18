@@ -1,0 +1,9 @@
+if [ "$TERM" != "dumb" ]; then
+    [ -e "$HOME/.dircolors" ] && DIR_COLORS="$HOME/.dircolors"
+    [ -e "$DIR_COLORS" ] || DIR_COLORS=""
+    eval `dircolors $DIR_COLORS`
+fi
+
+# set default console and visual text editors here
+export EDITOR="vim"
+export VISUAL="vim"

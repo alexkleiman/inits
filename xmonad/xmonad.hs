@@ -19,7 +19,7 @@ myManageHook = composeAll . concat $
       , className =? "XTerm" --> doF W.focusDown
       ]
       , [ className =? util  --> doShift "Utils" | util <- utilClass ]
-      , [ className =? devilSpawn --> doShift "devil spawn" | devilSpawn <- devilClass ]
+      {-, [ className =? devilSpawn --> doShift "devil spawn" | devilSpawn <- devilClass ]-}
       , [ className =? vm --> doShift "Code1" | vm <- vmClass ]
     ]
     where
@@ -27,7 +27,7 @@ myManageHook = composeAll . concat $
         readClass = ["Okular", "Xpdf", "Evince"]
         writerClass = ["Kile", "Kate"]
         codeClass = ["Eclipse", "QtCreator"]
-        devilClass = ["XTerm"]
+        {-devilClass = ["XTerm"]-}
         utilClass = ["Workrave"]
         vmClass = ["qemu-system-i386"]
       
@@ -45,7 +45,7 @@ main = do
                       , ppTitle = xmobarColor "green" "" . shorten 50
                     }
 --        , modMask = mod3Mask --change to whatever you want
-        , terminal = "xfce4-terminal" --use xfce4-terminal for terminal
+        , terminal = "xterm" --use xfce4-terminal for terminal
         , workspaces = myWorkspaces
       } `additionalKeys`
       [ ((mod1Mask .|. shiftMask, xK_l), spawn "xlock")
