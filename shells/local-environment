@@ -1,0 +1,31 @@
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" 
+
+export PATH=~/bin:$PATH:~/.cabal/bin
+
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+alias cr="python ~/.scripts/upload.py \-y \-s codereview.10gen.com \-m"
+
+export MONGO=~/mongo
+export msrc=$MONGO/src/mongo
+export CSCOPE_DB=$msrc
+
+function build {
+    CHANGED_DIR=false
+
+    if [[ "$PWD" != "$MONGO" ]]; then
+        pushd $MONGO
+        CHANGED_DIR=true
+    fi
+
+    NTHREADS=4
+    echo "Building with $NTHREADS threads..."
+
+    scons -j 4 --64 --dbg=on --opt=off all > build_all_x64debug.log
+
+    if [[ $CHANGED_DIR = true ]]; then
+        popd
+    fi
+}
+
+cdpath=($msrc)

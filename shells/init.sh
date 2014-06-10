@@ -9,3 +9,4 @@ linkOrWarn shells/bashrc ~/.bashrc
 linkOrWarn shells/dircolors ~/.dircolors
 linkOrWarn shells/environment ~/.environment
 linkOrWarn shells/zshrc ~/.zshrc
+linkOrWarn shells/local-environment ~/.local-environment
