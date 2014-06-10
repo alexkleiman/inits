@@ -18,7 +18,7 @@ set nocompatible
 execute pathogen#infect()
 
 " turn on 256 colors
-"set t_Co=256
+" set t_Co=256
 
 "syntax highlighting
 syntax enable
@@ -143,10 +143,16 @@ set cinkeys=0{,0},0),:,0#,!^F,!<Tab>,o,O,e
 set wildmode=longest,full
 set wildmenu
 
-"syntasic stuff for weenix
+"syntasic stuff
 let g:syntastic_c_checkers = ['make']
 "let g:syntastic_latex_checkers = ['make']
-let g:syntastic_disabled_filetypes = ['latex']
+let g:syntastic_disabled_filetypes = ['latex', 'c++']
+
+"syntastic for c++
+"let g:syntastic_cpp_check_header = 1
+"let g:syntastic_cpp_no_include_search = 1
+"let g:syntastic_cpp_no_default_include_dirs = 1
+"let g:syntastic_cpp_auto_refrech_includes = 1
 
 " good tabbing for latex
 let g:tex_flavor='latex'
@@ -158,6 +164,8 @@ function CopyLine(relnum)
     <PageUp>
     p
 endfunction
+
+set cc=100
 
 " file specific things
 autocmd BufNewFile,BufRead *.tex set textwidth=80

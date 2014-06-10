@@ -1,4 +1,4 @@
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
+xterm &
 xsetroot -cursor_name left_ptr
-iptables-save
-iptables-restore &
+exec $HOME/bin/xmonad
