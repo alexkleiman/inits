@@ -1,2 +1,4 @@
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 xsetroot -cursor_name left_ptr
+iptables-save
+iptables-restore &

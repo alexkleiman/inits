@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/gpfs/main/course/cs018/admin/grades/ta/arkleima/finalexam/fileseuisz/finalexam'
 let g:netrw_dirhist_2='/gpfs/main/course/cs018/admin/grades/ta/arkleima/finalexam/fileseuisz'
 let g:netrw_dirhist_3='/gpfs/main/course/cs018/admin/grades/ta/arkleima/finalexam/fileLChQKI'
 let g:netrw_dirhist_4='/gpfs/main/course/cs018/admin/grades/ta/arkleima/finalexam/fileLChQKI/finalexam'
 let g:netrw_dirhist_5='/gpfs/main/course/cs018/admin/grades/ta/arkleima/finalexam/fileLChQKI'
 let g:netrw_dirhist_6='/gpfs/main/course/cs018/admin/grades/ta/arkleima/finalexam/filewDn1er/finalexam'
+let g:netrw_dirhist_7='/home/arkleima/.local'
