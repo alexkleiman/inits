@@ -1,2 +1,4 @@
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -load ~/.Xresources
+xterm &
 xsetroot -cursor_name left_ptr
+exec $HOME/bin/xmonad
