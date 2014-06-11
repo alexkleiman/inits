@@ -172,7 +172,12 @@ autocmd BufNewFile,BufRead *.tex set textwidth=80
 autocmd BufNewFile,BufRead *.txt set textwidth=80
 autocmd BufNewFile,BufRead README set textwidth=80
 
-"YouCompleteMe stuff
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples.ycm_global_ycm_extra_conf'
+"ycm
+"backup conf file
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
+"turn off confirmation of conf file
 let g:ycm_confirm_extra_conf = 0
+"whitelist of filetypes for ycm
+let g:ycm_filetype_whitelist = { '*': 1 }
+" toggle diagnostics on/off
+let g:ycm_show_diagnostics_ui = 1
