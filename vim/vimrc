@@ -180,4 +180,4 @@ let g:ycm_confirm_extra_conf = 0
 "whitelist of filetypes for ycm
 let g:ycm_filetype_whitelist = { '*': 1 }
 " toggle diagnostics on/off
-let g:ycm_show_diagnostics_ui = 1
+let g:ycm_show_diagnostics_ui = 0
