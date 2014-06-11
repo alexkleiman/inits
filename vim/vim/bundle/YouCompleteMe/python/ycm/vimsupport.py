@@ -55,6 +55,18 @@ def TextAfterCursor():
   return vim.current.line[ CurrentColumn(): ]
 
 
+# Expects version_string in 'MAJOR.MINOR.PATCH' format, e.g. '7.4.301'
+def VimVersionAtLeast( version_string ):
+  major, minor, patch = [ int( x ) for x in version_string.split( '.' ) ]
+
+  # For Vim 7.4.301, v:version is '704'
+  actual_major_and_minor = GetIntValue( 'v:version' )
+  if actual_major_and_minor != major * 100 + minor:
+    return False
+
+  return GetBoolValue( 'has("patch{0}")'.format( patch ) )
+
+
 # Note the difference between buffer OPTIONS and VARIABLES; the two are not
 # the same.
 def GetBufferOption( buffer_object, option ):
@@ -128,6 +140,11 @@ def UnplaceAllSignsInBuffer( buffer_number ):
 
 
 def PlaceSign( sign_id, line_num, buffer_num, is_error = True ):
+  # libclang can give us diagnostics that point "outside" the file; Vim borks
+  # on these.
+  if line_num < 1:
+    line_num = 1
+
   sign_name = 'YcmError' if is_error else 'YcmWarning'
   vim.command( 'sign place {0} line={1} name={2} buffer={3}'.format(
     sign_id, line_num, sign_name, buffer_num ) )
@@ -194,12 +211,19 @@ def ConvertDiagnosticsToQfList( diagnostics ):
     # line/column numbers are 1 or 0 based in its various APIs. Here, it wants
     # them to be 1-based.
     location = diagnostic[ 'location' ]
+    line_num = location[ 'line_num' ]
+
+    # libclang can give us diagnostics that point "outside" the file; Vim borks
+    # on these.
+    if line_num < 1:
+      line_num = 1
+
     return {
       'bufnr' : GetBufferNumberForFilename( location[ 'filepath' ] ),
-      'lnum'  : location[ 'line_num' ] + 1,
-      'col'   : location[ 'column_num' ] + 1,
+      'lnum'  : line_num,
+      'col'   : location[ 'column_num' ],
       'text'  : ToUtf8IfNeeded( diagnostic[ 'text' ] ),
-      'type'  : diagnostic[ 'kind' ],
+      'type'  : diagnostic[ 'kind' ][ 0 ],
       'valid' : 1
     }
 
