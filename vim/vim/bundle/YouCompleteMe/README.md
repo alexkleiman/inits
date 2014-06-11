@@ -207,7 +207,7 @@ process.
     version of Vim with Python support.
 
 2.  **Install YCM** with [Vundle][] (or [Pathogen][], but Vundle is a better
-    idea). With Vundle, this would mean adding a `Bundle
+    idea). With Vundle, this would mean adding a `Plugin
     'Valloric/YouCompleteMe'` line to your [vimrc][].
 
     If you don't install YCM with Vundle, make sure you have run
@@ -406,7 +406,7 @@ YCM uses [Jedi][] to power its semantic completion for Python. This should "just
 work" without any configuration from the user. You do NOT need to install Jedi
 yourself; YCM uses it as a git subrepo. If you're installing YCM with Vundle
 (which is the recommended way) then Vundle will make sure that the subrepo is
-checked out when you do `:BundleInstall`. If you're installing YCM by hand, then
+checked out when you do `:PluginInstall`. If you're installing YCM by hand, then
 you need to run `git submodule update --init --recursive` when you're checking
 out the YCM repository. That's it.
 
@@ -419,7 +419,7 @@ In the future expect to see features like go-to-definition for Python as well.
 YCM uses [OmniSharp][] to provide semantic completion for C#. It's used as a git
 subrepo. If you're installing YCM with Vundle (which is the recommended way)
 then Vundle will make sure that the subrepo is checked out when you do
-`:BundleInstall`. If you're installing YCM by hand, then you need to run `git
+`:PluginInstall`. If you're installing YCM by hand, then you need to run `git
 submodule update --init --recursive` when you're checking out the YCM
 repository.
 
@@ -1654,13 +1654,7 @@ landed in Vim 7.3.584 (and a few commits before that).
 ### I get annoying messages in Vim's status area when I type
 
 If you're referring to the `User defined completion <bla bla> back at original`
-and similar, then sadly there's no fix for those. Vim will emit them no matter
-how hard I try to silence them.
-
-You'll have to learn to ignore them. It's a shitty "solution", I know.
-
-There's an [outstanding patch for Vim that fixes this issue][status-mes], but at
-the time of writing Vim upstream hasn't yet merged it in.
+and similar, then just update to Vim 7.4.314 (or later) and they'll go away.
 
 ### Nasty bugs happen if I have the `vim-autoclose` plugin installed
 

@@ -70,6 +70,6 @@ function rw {
     fi
 }
 
-if [[ -e ~/.local ]]; then
-    . ~/.local
+if [[ -e ~/.local-environment ]]; then
+    . ~/.local-environment
 fi

@@ -146,7 +146,7 @@ set wildmenu
 "syntasic stuff
 let g:syntastic_c_checkers = ['make']
 "let g:syntastic_latex_checkers = ['make']
-let g:syntastic_disabled_filetypes = ['latex', 'c++']
+let g:syntastic_disabled_filetypes = ['latex', 'cpp']
 
 "syntastic for c++
 "let g:syntastic_cpp_check_header = 1
@@ -171,3 +171,8 @@ set cc=100
 autocmd BufNewFile,BufRead *.tex set textwidth=80
 autocmd BufNewFile,BufRead *.txt set textwidth=80
 autocmd BufNewFile,BufRead README set textwidth=80
+
+"YouCompleteMe stuff
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_global_ycm_extra_conf'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/examples.ycm_global_ycm_extra_conf'
+let g:ycm_confirm_extra_conf = 0
