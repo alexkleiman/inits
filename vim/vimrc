@@ -93,6 +93,9 @@ endfunction
 noremap <leader>. gt
 noremap <leader>m gT
 
+"switch between .c* and .h files in c/c++
+"noremap <leader>a :A
+
 set showcmd            " Show (partial) command in status line.
 set showmatch          " Show matching brackets.
 set ignorecase         " Do case insensitive matching
