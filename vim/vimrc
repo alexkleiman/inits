@@ -152,6 +152,7 @@ let g:syntastic_c_checkers = ['make']
 let g:syntastic_disabled_filetypes = ['latex', 'cpp']
 
 "syntastic for c++
+"let g:syntatic_cpp_checkers = ['cpplint']
 "let g:syntastic_cpp_check_header = 1
 "let g:syntastic_cpp_no_include_search = 1
 "let g:syntastic_cpp_no_default_include_dirs = 1
