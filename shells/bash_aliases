@@ -19,3 +19,5 @@ alias zshrc='vim ~/.zshrc'
 alias bashrc='vim ~/.bashrc'
 alias cv='popd'
 alias lock='gnome-screensaver-command -l'
+alias TODO="vim ~/TODO"
+alias ct="cat ~/TODO"
