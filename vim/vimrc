@@ -185,3 +185,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_whitelist = { '*': 1 }
 " toggle diagnostics on/off
 let g:ycm_show_diagnostics_ui = 0
+
+"conque
+let g:ConqueTerm_Color = 1
+let g:ConqueTerm_TERM = 'xterm'
