@@ -6,7 +6,7 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 
 alias cr="python ~/.scripts/upload.py \-y \-s codereview.10gen.com \-m"
 
-export MONGO=~/mongo
+export MONGO=~/mongo-fork
 export msrc=$MONGO/src/mongo
 export CSCOPE_DB=$msrc
 
@@ -21,11 +21,19 @@ function build {
     NTHREADS=4
     echo "Building with $NTHREADS threads..."
 
-    scons -j 4 --64 --dbg=on --opt=off all > build_all_x64debug.log
+    ARGS=$@
+
+    scons -j 4 --64 --dbg=on --opt=off $ARGS > build_all_x64debug.log
 
     if [[ $CHANGED_DIR = true ]]; then
         popd
     fi
 }
 
+alias bbuild="build --berkeleyDB"
+
 cdpath=($msrc)
+
+alias pg="echo 28a2c40f6326f9ef1a8b8839f95339a8534876c0"
+
+alias unittests="sh build/unittests.txt"
