@@ -189,3 +189,6 @@ let g:ycm_show_diagnostics_ui = 0
 "conque
 let g:ConqueTerm_Color = 1
 let g:ConqueTerm_TERM = 'xterm'
+
+"airline
+let g:airline#extensions#tabline#enabled = 1
