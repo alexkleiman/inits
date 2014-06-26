@@ -32,6 +32,6 @@ alias bbuild="build --berkeleyDB"
 
 cdpath=($msrc)
 
-alias pg="echo 28a2c40f6326f9ef1a8b8839f95339a8534876c0"
-
+alias xlock="gnome-screensaver-command -l"
 alias unittests="sh build/unittests.txt"
+alias pg="echo 28a2c40f6326f9ef1a8b8839f95339a8534876c0"
