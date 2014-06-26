@@ -21,9 +21,7 @@ function build {
     NTHREADS=4
     echo "Building with $NTHREADS threads..."
 
-    ARGS=$@
-
-    scons -j 4 --64 --dbg=on --opt=off $ARGS > build_all_x64debug.log
+    scons -j 4 --64 --dbg=on --opt=off $@ > build_all_x64debug.log
 
     if [[ $CHANGED_DIR = true ]]; then
         popd
