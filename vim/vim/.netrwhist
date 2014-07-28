@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/arkleima/mongo-fork/src/mongo/db/storage/berkeley'
 let g:netrw_dirhist_2='/Users/arkleima/mongo/src/mongo/db/storage/heap'
+let g:netrw_dirhist_3='/gpfs/main/course/cs018/handin/scaregames/dpcollin/arendalegames/main'
+let g:netrw_dirhist_4='/gpfs/main/course/cs018/handin/scaregames/dpcollin/arendalegames'
+let g:netrw_dirhist_5='/gpfs/main/course/cs018/handin/scaregames/dpcollin/arendalegames/charactercards'
