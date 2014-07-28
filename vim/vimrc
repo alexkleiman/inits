@@ -4,7 +4,7 @@
 " This is your Vim initialization file. It is read on Vim startup.
 "
 " Change this file to customize your Vim settings.
-" 
+"
 " Vim treats lines beginning with " as comments.
 "
 " EXAMPLES are available in /usr/local/doc/startups.
@@ -57,9 +57,9 @@ if has("autocmd")
   filetype indent on
 endif
 
-" mappings 
+" mappings
 
-"jj = <Esc>   
+"jj = <Esc>
 inoremap jj <Esc>
 
 " leader as comma
@@ -92,6 +92,7 @@ endfunction
 
 noremap <leader>. gt
 noremap <leader>m gT
+noremap <leader>t :ConqueTermVSplit zsh<Return>
 
 "switch between .c* and .h files in c/c++
 "noremap <leader>a :A
@@ -146,6 +147,9 @@ set cinkeys=0{,0},0),:,0#,!^F,!<Tab>,o,O,e
 set wildmode=longest,full
 set wildmenu
 
+"always show the status line
+set laststatus=2
+
 "syntasic stuff
 let g:syntastic_c_checkers = ['make']
 "let g:syntastic_latex_checkers = ['make']
@@ -189,6 +193,15 @@ let g:ycm_show_diagnostics_ui = 0
 "conque
 let g:ConqueTerm_Color = 1
 let g:ConqueTerm_TERM = 'xterm'
-
+let g:ConqueTerm_ReadUnfocused = 1
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_CloseOnEnd = 1
 "airline
-let g:airline#extensions#tabline#enabled = 1
+"turn off annoying whitespace detection
+let g:airline#extensions#whitespace#enabled = 0
+
+" enable fugitive integration
+let g:airline#extensions#branch#enabled = 1
+
+" enable syntastic integration
+let g:airline#extensions#syntastic#enabled = 0

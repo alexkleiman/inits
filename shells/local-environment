@@ -19,11 +19,18 @@ function build {
     fi
 
     NTHREADS=4
+
+#    while getopts "j:" opt; do
+#        case $opt in
+#            j)
+#                $NTHREADS = $opt
+#            ;;
+#        esac
+#    done
+
     echo "Building with $NTHREADS threads..."
 
-    ARGS=$@
-
-    scons -j 4 --64 --dbg=on --opt=off $ARGS > build_all_x64debug.log
+    scons -j 4 --64 --dbg=on --opt=off $@ > build_all_x64debug.log
 
     if [[ $CHANGED_DIR = true ]]; then
         popd
@@ -37,3 +44,5 @@ cdpath=($msrc)
 alias xlock="gnome-screensaver-command -l"
 alias unittests="sh build/unittests.txt"
 alias pg="echo 28a2c40f6326f9ef1a8b8839f95339a8534876c0"
+alias grep="ggrep"
+alias br="build --rocksdb --libc++ --osx-version-min=10.7"
