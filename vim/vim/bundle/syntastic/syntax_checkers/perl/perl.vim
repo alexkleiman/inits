@@ -11,6 +11,22 @@
 "
 "============================================================================
 "
+" Security:
+"
+" This checker runs 'perl -c' against your file, which in turn executes
+" any BEGIN, UNITCHECK, and CHECK blocks, and any use statements in
+" your file.  This is probably fine if you wrote the file yourself,
+" but it can be a problem if you're trying to check third party files.
+" If you are 100% willing to let Vim run the code in your file, set
+" g:syntastic_enable_perl_checker to 1 in your vimrc to enable this
+" checker:
+"
+"   let g:syntastic_enable_perl_checker = 1
+"
+" References:
+"
+" - http://perldoc.perl.org/perlrun.html#*-c*
+"
 " Checker options:
 "
 " - g:syntastic_perl_interpreter (string; default: 'perl')
@@ -24,11 +40,7 @@
 if exists('g:loaded_syntastic_perl_perl_checker')
     finish
 endif
-let g:loaded_syntastic_perl_perl_checker=1
-
-if !exists('g:syntastic_perl_interpreter')
-    let g:syntastic_perl_interpreter = 'perl'
-endif
+let g:loaded_syntastic_perl_perl_checker = 1
 
 if !exists('g:syntastic_perl_lib_path')
     let g:syntastic_perl_lib_path = []
@@ -38,16 +50,25 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 function! SyntaxCheckers_perl_perl_IsAvailable() dict
+    if !exists('g:syntastic_perl_perl_exec') && exists('g:syntastic_perl_interpreter')
+        let g:syntastic_perl_perl_exec = g:syntastic_perl_interpreter
+    endif
+
     " don't call executable() here, to allow things like
     " let g:syntastic_perl_interpreter='/usr/bin/env perl'
-    silent! call system(syntastic#util#shexpand(g:syntastic_perl_interpreter) . ' -e ' . syntastic#util#shescape('exit(0)'))
+    silent! call system(self.getExecEscaped() . ' -e ' . syntastic#util#shescape('exit(0)'))
     return v:shell_error == 0
 endfunction
 
 function! SyntaxCheckers_perl_perl_GetLocList() dict
-    let exe = expand(g:syntastic_perl_interpreter)
+    if !exists('g:syntastic_enable_perl_checker') || !g:syntastic_enable_perl_checker
+        call syntastic#log#error('checker perl/perl: checks disabled for security reasons; ' .
+            \ 'set g:syntastic_enable_perl_checker to 1 to override')
+        return []
+    endif
+
     if type(g:syntastic_perl_lib_path) == type('')
-        call syntastic#log#deprecationWarn('variable g:syntastic_perl_lib_path should be a list')
+        call syntastic#log#oneTimeWarn('variable g:syntastic_perl_lib_path should be a list')
         let includes = split(g:syntastic_perl_lib_path, ',')
     else
         let includes = copy(syntastic#util#var('perl_lib_path'))
@@ -58,9 +79,7 @@ function! SyntaxCheckers_perl_perl_GetLocList() dict
         \ (index(shebang['args'], '-t') >= 0 ? ' -t' : '')
     let errorformat = '%f:%l:%m'
 
-    let makeprg = self.makeprgBuild({
-        \ 'exe': exe,
-        \ 'args_before': '-c -X ' . extra })
+    let makeprg = self.makeprgBuild({ 'args_before': '-c -X ' . extra })
 
     let errors = SyntasticMake({
         \ 'makeprg': makeprg,
@@ -71,9 +90,7 @@ function! SyntaxCheckers_perl_perl_GetLocList() dict
         return errors
     endif
 
-    let makeprg = self.makeprgBuild({
-        \ 'exe': exe,
-        \ 'args_before': '-c -Mwarnings ' . extra })
+    let makeprg = self.makeprgBuild({ 'args_before': '-c -Mwarnings ' . extra })
 
     return SyntasticMake({
         \ 'makeprg': makeprg,

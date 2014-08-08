@@ -153,7 +153,7 @@ set laststatus=2
 "syntasic stuff
 let g:syntastic_c_checkers = ['make']
 "let g:syntastic_latex_checkers = ['make']
-let g:syntastic_disabled_filetypes = ['latex', 'cpp']
+"let g:syntastic_disabled_filetypes = ['latex']
 
 "syntastic for c++
 "let g:syntatic_cpp_checkers = ['cpplint']
@@ -172,8 +172,6 @@ function CopyLine(relnum)
     <PageUp>
     p
 endfunction
-
-set cc=100
 
 " file specific things
 autocmd BufNewFile,BufRead *.tex set textwidth=80

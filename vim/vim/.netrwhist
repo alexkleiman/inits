@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/arkleima/mongo-fork/src/mongo/db/storage/berkeley'
 let g:netrw_dirhist_2='/Users/arkleima/mongo/src/mongo/db/storage/heap'
 let g:netrw_dirhist_3='/Users/arkleima/mongo-fork/src/mongo/db'
 let g:netrw_dirhist_4='/Users/arkleima/mongo-fork/src/mongo'
 let g:netrw_dirhist_5='/Users/arkleima/mongo-fork/src'
 let g:netrw_dirhist_6='/Users/arkleima/mongo-fork/src/mongo'
+let g:netrw_dirhist_7='/gpfs/main/home/arkleima/.vim'
