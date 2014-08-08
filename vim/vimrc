@@ -173,6 +173,8 @@ function CopyLine(relnum)
     p
 endfunction
 
+set cc=101
+
 " file specific things
 autocmd BufNewFile,BufRead *.tex set textwidth=80
 autocmd BufNewFile,BufRead *.txt set textwidth=80
@@ -194,6 +196,10 @@ let g:ConqueTerm_TERM = 'xterm'
 let g:ConqueTerm_ReadUnfocused = 1
 let g:ConqueTerm_InsertOnEnter = 1
 let g:ConqueTerm_CloseOnEnd = 1
+
+"conqueGDB
+let g:ConqueGdb_Leader = '\'
+
 "airline
 "turn off annoying whitespace detection
 let g:airline#extensions#whitespace#enabled = 0
@@ -203,3 +209,29 @@ let g:airline#extensions#branch#enabled = 1
 
 " enable syntastic integration
 let g:airline#extensions#syntastic#enabled = 0
+
+"tagbar
+nmap <Leader>f :TagbarOpen<SPACE>j<CR>
+nmap <Leader>q :TagbarClose<CR>
+nmap <Leader>s :TagbarTogglePause<CR>
+let g:tagbar_width = 63
+"let g:tagbar_left = 1
+let g:tagbar_autofocus = 1
+"open tagbar when opening vim
+"autocmd VimEnter * nested :call tagbar#autoopen(1)
+"open tagbar when opening new tab
+"autocmd BufEnter * nested :call tagbar#autoopen(0)
+
+"CommandT
+nnoremap <silent> <Leader>v :CommandT<CR>
+
+"if &term =~ "xterm\\|rxvt"
+      """ use an orange cursor in insert mode
+      "let &t_SI = "\<Esc>]12;orange\x7"
+      """use a red cursor otherwise
+      "let &t_EI = "\<Esc>]12;darkgrey\x7"
+      "silent !echo -ne "\033]12;darkgrey\007"
+      """ reset cursor when vim exits
+      "autocmd VimLeave * silent !echo -ne "\033]112\007"
+      """ use \003]12;gray\007 for gnome-terminal
+"endif

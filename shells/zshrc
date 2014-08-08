@@ -7,6 +7,15 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="candy"
 
+# Customize to your needs...
+export JAVA_HOME=/usr/lib/java/jdk1.7.0_45
+#export JAVA_HOME=/usr/lib/java/jdk1.6.0_45
+
+export PATH=$JAVA_HOME/bin:$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+setopt autopushd
+setopt auto_cd
+
 # Load aliases
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
@@ -48,13 +57,4 @@ fi
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-export JAVA_HOME=/usr/lib/java/jdk1.7.0_45
-#export JAVA_HOME=/usr/lib/java/jdk1.6.0_45
-
-export PATH=$JAVA_HOME/bin:$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-
-setopt autopushd
-setopt auto_cd
 

@@ -1,7 +1,7 @@
 # FILE:     autoload/conque_term/conque_subprocess.py
 # AUTHOR:   Nico Raffo <nicoraffo@gmail.com>
 # WEBSITE:  http://conque.googlecode.com
-# MODIFIED: 2011-09-02
+# MODIFIED: 2011-09-12
 # VERSION:  2.3, for Vim 7.0
 # LICENSE:
 # Conque - Vim terminal/console emulator
@@ -53,7 +53,6 @@ import termios
 import struct
 import shlex
 
-
 class ConqueSubprocess:
 
     # process id
@@ -71,6 +70,7 @@ class ConqueSubprocess:
         executable = command_arr[0]
         args = command_arr
 
+
         # try to fork a new pty
         try:
             self.pid, self.fd = pty.fork()
@@ -81,6 +81,17 @@ class ConqueSubprocess:
 
         # child proc, replace with command after altering terminal attributes
         if self.pid == 0:
+
+            # Set signals to default values in child
+            try:
+                signal.signal(signal.SIGCHLD, signal.SIG_DFL)
+            except:
+               pass
+
+            try:
+                signal.signal(signal.SIGHUP, signal.SIG_DFL)
+            except:
+               pass
 
             # set requested environment variables
             for k in env.keys():
@@ -193,6 +204,10 @@ class ConqueSubprocess:
             os.kill(self.pid, signal.SIGWINCH)
         except:
             pass
+
+
+    def getpid(self):
+        return self.pid;
 
 
 # vim:foldmethod=marker
