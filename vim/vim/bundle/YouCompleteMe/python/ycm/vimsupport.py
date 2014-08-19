@@ -103,8 +103,8 @@ def GetUnsavedAndCurrentBufferData():
 
 
 def GetBufferNumberForFilename( filename, open_file_if_needed = True ):
-  return GetIntValue( "bufnr('{0}', {1})".format(
-      os.path.realpath( filename ),
+  return GetIntValue( u"bufnr('{0}', {1})".format(
+      EscapeForVim( os.path.realpath( filename ) ),
       int( open_file_if_needed ) ) )
 
 

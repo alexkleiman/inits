@@ -288,8 +288,8 @@ process.
     other flags.
 
     Running the `make` command will also place the `libclang.[so|dylib]` in the
-    `YouCompleteMe/python` folder for you if you compiled with clang support (it
-    needs to be there for YCM to work).
+    `YouCompleteMe/third_party/ycmd` folder for you if you compiled with clang
+    support (it needs to be there for YCM to work).
 
 That's it. You're done. Refer to the _User Guide_ section on how to use YCM.
 Don't forget that if you want the C-family semantic completion engine to work,
@@ -386,8 +386,10 @@ needs different flags**. Hint: just replace the strings in the `flags` variable
 with compilation flags necessary for your project. That should be enough for 99%
 of projects.
 
-Yes, [Clang's `CompilationDatabase` system][compdb] is also supported. Again, see the
-above linked example file.
+Yes, [Clang's `CompilationDatabase` system][compdb] is also supported. Again,
+see the above linked example file. You can get CMake to generate this file for
+you by adding `set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )` to your project's
+`CMakeLists.txt` file (if using CMake).
 
 If Clang encounters errors when compiling the header files that your file
 includes, then it's probably going to take a long time to get completions.  When
@@ -706,7 +708,7 @@ are changed outside of Vim, or whenever Omnisharp cache is out-of-sync.
 
 Supported in filetypes: `cs`
 
-### The `GoToImplemention` subcommand
+### The `GoToImplementation` subcommand
 
 Looks up the symbol under the cursor and jumps to its implementation (i.e.
 non-interface). If there are multiple implementations, instead provides a list
