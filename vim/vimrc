@@ -61,6 +61,7 @@ endif
 
 "jj = <Esc>
 inoremap jj <Esc>
+inoremap <C-r> <Esc>:make<CR><CR>
 
 " leader as comma
 let mapleader=","
@@ -150,6 +151,15 @@ set wildmenu
 "always show the status line
 set laststatus=2
 
+"splitting
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
 "syntasic stuff
 let g:syntastic_c_checkers = ['make']
 "let g:syntastic_latex_checkers = ['make']
@@ -173,7 +183,7 @@ function CopyLine(relnum)
     p
 endfunction
 
-set cc=100
+set cc=101
 
 " file specific things
 autocmd BufNewFile,BufRead *.tex set textwidth=80
