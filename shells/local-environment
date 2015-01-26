@@ -2,3 +2,11 @@ export CPLUS_INLUDE_PATH=${PLUS_INCLUDE_PATH}:~/code/rocksdb/include
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/code/rocksdb
 export LIBRARY_PATH=${LIBRARY_PATH}:~/code/rocksdb
 alias pg="f26ee679cc190251a60d146d0f27b83ad7f97960"
+
+export PATH=$PATH:/admin/consult/bin
+export PATH=/contrib/projects/go/bin:$PATH
+
+alias consult="evince /admin/consult/doc/consultant_missive.pdf&disown"
+
+export GOROOT=/contrib/projects/go
+export GOPATH=~/course/cs138

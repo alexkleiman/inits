@@ -94,6 +94,8 @@ noremap <leader>. gt
 noremap <leader>m gT
 noremap <leader>t :ConqueTermVSplit zsh<Return>
 
+"inoremap <c-m> <Esc>:make<CR><CR>
+
 "switch between .c* and .h files in c/c++
 "noremap <leader>a :A
 
@@ -222,6 +224,8 @@ let g:tagbar_autofocus = 1
 "open tagbar when opening new tab
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
+" go stuff
+let g:gofmt_command = 'goimports'
 "CommandT
 nnoremap <silent> <Leader>v :CommandT<CR>
 
