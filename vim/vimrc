@@ -63,6 +63,16 @@ endif
 inoremap jj <Esc>
 inoremap <C-r> <Esc>:make<CR><CR>
 
+" better navigating between windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" more natural split opening
+set splitbelow
+set splitright
+
 " leader as comma
 let mapleader=","
 
@@ -94,6 +104,8 @@ endfunction
 noremap <leader>. gt
 noremap <leader>m gT
 noremap <leader>t :ConqueTermVSplit zsh<Return>
+
+"inoremap <c-m> <Esc>:make<CR><CR>
 
 "switch between .c* and .h files in c/c++
 "noremap <leader>a :A
@@ -163,7 +175,7 @@ set splitright
 "syntasic stuff
 let g:syntastic_c_checkers = ['make']
 "let g:syntastic_latex_checkers = ['make']
-let g:syntastic_disabled_filetypes = ['latex', 'cpp']
+"let g:syntastic_disabled_filetypes = ['latex']
 
 "syntastic for c++
 "let g:syntatic_cpp_checkers = ['cpplint']
@@ -206,6 +218,10 @@ let g:ConqueTerm_TERM = 'xterm'
 let g:ConqueTerm_ReadUnfocused = 1
 let g:ConqueTerm_InsertOnEnter = 1
 let g:ConqueTerm_CloseOnEnd = 1
+
+"conqueGDB
+let g:ConqueGdb_Leader = '\'
+
 "airline
 "turn off annoying whitespace detection
 let g:airline#extensions#whitespace#enabled = 0
@@ -215,3 +231,31 @@ let g:airline#extensions#branch#enabled = 1
 
 " enable syntastic integration
 let g:airline#extensions#syntastic#enabled = 0
+
+"tagbar
+nmap <Leader>f :TagbarOpen<SPACE>j<CR>
+nmap <Leader>q :TagbarClose<CR>
+nmap <Leader>s :TagbarTogglePause<CR>
+let g:tagbar_width = 63
+"let g:tagbar_left = 1
+let g:tagbar_autofocus = 1
+"open tagbar when opening vim
+"autocmd VimEnter * nested :call tagbar#autoopen(1)
+"open tagbar when opening new tab
+"autocmd BufEnter * nested :call tagbar#autoopen(0)
+
+" go stuff
+let g:gofmt_command = 'goimports'
+"CommandT
+nnoremap <silent> <Leader>v :CommandT<CR>
+
+"if &term =~ "xterm\\|rxvt"
+      """ use an orange cursor in insert mode
+      "let &t_SI = "\<Esc>]12;orange\x7"
+      """use a red cursor otherwise
+      "let &t_EI = "\<Esc>]12;darkgrey\x7"
+      "silent !echo -ne "\033]12;darkgrey\007"
+      """ reset cursor when vim exits
+      "autocmd VimLeave * silent !echo -ne "\033]112\007"
+      """ use \003]12;gray\007 for gnome-terminal
+"endif

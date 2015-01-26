@@ -1,48 +1,12 @@
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" 
+export CPLUS_INLUDE_PATH=${PLUS_INCLUDE_PATH}:~/code/rocksdb/include
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:~/code/rocksdb
+export LIBRARY_PATH=${LIBRARY_PATH}:~/code/rocksdb
+alias pg="f26ee679cc190251a60d146d0f27b83ad7f97960"
 
-export PATH=~/bin:$PATH:~/.cabal/bin
+export PATH=$PATH:/admin/consult/bin
+export PATH=/contrib/projects/go/bin:$PATH
 
-alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias consult="evince /admin/consult/doc/consultant_missive.pdf&disown"
 
-alias cr="python ~/.scripts/upload.py \-y \-s codereview.10gen.com \-m"
-
-export MONGO=~/mongo-fork
-export msrc=$MONGO/src/mongo
-export CSCOPE_DB=$msrc
-
-function build {
-    CHANGED_DIR=false
-
-    if [[ "$PWD" != "$MONGO" ]]; then
-        pushd $MONGO
-        CHANGED_DIR=true
-    fi
-
-    NTHREADS=4
-
-#    while getopts "j:" opt; do
-#        case $opt in
-#            j)
-#                $NTHREADS = $opt
-#            ;;
-#        esac
-#    done
-
-    echo "Building with $NTHREADS threads..."
-
-    scons -j 4 --64 --dbg=on --opt=off $@ > build_all_x64debug.log
-
-    if [[ $CHANGED_DIR = true ]]; then
-        popd
-    fi
-}
-
-alias bbuild="build --berkeleyDB"
-
-cdpath=($msrc)
-
-alias xlock="gnome-screensaver-command -l"
-alias unittests="sh build/unittests.txt"
-alias pg="echo 28a2c40f6326f9ef1a8b8839f95339a8534876c0"
-alias grep="ggrep"
-alias br="build --rocksdb --libc++ --osx-version-min=10.7"
+export GOROOT=/contrib/projects/go
+export GOPATH=~/course/cs138
