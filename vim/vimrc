@@ -69,6 +69,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" map semi-colon to colon for easy commands!
+map ; :
+"noremap ;; ;
+
 " more natural split opening
 set splitbelow
 set splitright
@@ -259,3 +263,16 @@ nnoremap <silent> <Leader>v :CommandT<CR>
       "autocmd VimLeave * silent !echo -ne "\033]112\007"
       """ use \003]12;gray\007 for gnome-terminal
 "endif
+
+" Enhanced number incrementing - increment next number, even if it isn't on
+" cursor
+function! AddSubtract(char, back)
+  let pattern = &nrformats =~ 'alpha' ? '[[:alpha:][:digit:]]' : '[[:digit:]]'
+  call search(pattern, 'cw' . a:back)
+  execute 'normal! ' . v:count1 . a:char
+  silent! call repeat#set(":\<C-u>call AddSubtract('" .a:char. "', '" .a:back. "')\<CR>")
+endfunction
+nnoremap <silent>         <C-a> :<C-u>call AddSubtract("\<C-a>", '')<CR>
+nnoremap <silent> <Leader><C-a> :<C-u>call AddSubtract("\<C-a>", 'b')<CR>
+nnoremap <silent>         <C-x> :<C-u>call AddSubtract("\<C-x>", '')<CR>
+nnoremap <silent> <Leader><C-x> :<C-u>call AddSubtract("\<C-x>", 'b')<CR>
