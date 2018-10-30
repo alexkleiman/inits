@@ -21,3 +21,5 @@ alias cv='popd'
 alias lock='gnome-screensaver-command -l'
 alias TODO="vim ~/TODO"
 alias ct="cat ~/TODO"
+
+alias c="git commit -am foo $(date)'"

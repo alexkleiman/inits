@@ -1,7 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/gpfs/main/home/arkleima/course/cs138/src/github.com/alexkleiman/projects/tapestry/tapestry'
-let g:netrw_dirhist_2='/gpfs/main/course/cs167/admin/grades/ta/arkleima/s5fs/fileG5x76N'
-let g:netrw_dirhist_3='/gpfs/main/course/cs167/admin/grades/ta/arkleima/s5fs/filePCfHaj'
-let g:netrw_dirhist_4='/gpfs/main/course/cs167/admin/grades/ta/arkleima/s5fs'
-let g:netrw_dirhist_5='/gpfs/main/course/cs167/admin/grades/ta/arkleima/s5fs/filezkm8Vv'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/private/tmp/munki_swupd_cache/content/catalogs'
+let g:netrw_dirhist_2='/private/tmp/munki_swupd_cache'
+let g:netrw_dirhist_3='/private/tmp'
+let g:netrw_dirhist_4='/tmp'
