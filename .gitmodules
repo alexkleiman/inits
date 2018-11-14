@@ -1,3 +1,7 @@
 [submodule "vim/vim/bundle/command-t"]
 	path = vim/vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "vim/vim/pack/tpope/start/vim-vinegar"]
+	path = vim/vim/pack/tpope/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+	branch = master
