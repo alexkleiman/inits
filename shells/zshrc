@@ -16,6 +16,10 @@ export PATH=$JAVA_HOME/bin:$PATH:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/l
 setopt autopushd
 setopt auto_cd
 
+# fzf configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --glob "!.git/*"'
+
 # Load aliases
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases

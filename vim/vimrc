@@ -17,6 +17,9 @@ set nocompatible
 "pathogen
 execute pathogen#infect()
 
+" Plug
+call plug#begin('~/.vim/plugged')
+
 " turn on 256 colors
 " set t_Co=256
 
@@ -107,7 +110,6 @@ endfunction
 
 noremap <leader>. gt
 noremap <leader>m gT
-noremap <leader>t :ConqueTermVSplit zsh<Return>
 
 "inoremap <c-m> <Esc>:make<CR><CR>
 
@@ -135,8 +137,8 @@ set encoding=utf8
 set expandtab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " line and column number
 set ruler
@@ -178,6 +180,7 @@ set splitright
 
 "syntasic stuff
 let g:syntastic_c_checkers = ['make']
+let g:syntastic_python_checkers = ['flake8', 'mypy']
 "let g:syntastic_latex_checkers = ['make']
 "let g:syntastic_disabled_filetypes = ['latex']
 
@@ -245,18 +248,39 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = 15
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
-" Jump back to default window
-autocmd VimEnter * wincmd p
+" Uncomment to open netrw automatically on file open
+"augroup ProjectDrawer
+  "autocmd!
+  "autocmd VimEnter * :Vexplore
+"augroup END
+ "Jump back to default window
+"autocmd VimEnter * wincmd p
+
+" Toggle netrw
+let g:NetrwIsOpen=0
+
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+noremap <silent> <Leader>e :call ToggleNetrw()<CR>
 
 "tagbar
 nmap <Leader>f :TagbarOpen<SPACE>j<CR>
 nmap <Leader>q :TagbarClose<CR>
 nmap <Leader>s :TagbarTogglePause<CR>
-let g:tagbar_width = 63
+let g:tagbar_width = 40
 "let g:tagbar_left = 1
 let g:tagbar_autofocus = 1
 "open tagbar when opening vim
@@ -264,10 +288,40 @@ let g:tagbar_autofocus = 1
 "open tagbar when opening new tab
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
+"fzf
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+set rtp+=/usr/local/opt/fzf
+nnoremap <leader>t :FZF<cr>
+
+" fzf MRU
+nnoremap <silent> <Leader>g :call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})<CR>
+
+" fzf buffer
+function! s:buflist()
+  redir => ls
+  silent ls
+  redir END
+  return split(ls, '\n')
+endfunction
+
+function! s:bufopen(e)
+  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
+endfunction
+
+nnoremap <silent> <Leader>b :call fzf#run({
+\   'source':  reverse(<sid>buflist()),
+\   'sink':    function('<sid>bufopen'),
+\   'options': '+m',
+\   'down':    len(<sid>buflist()) + 2
+\ })<CR>
+
 " go stuff
 let g:gofmt_command = 'goimports'
-"CommandT
-nnoremap <silent> <Leader>v :CommandT<CR>
 
 "if &term =~ "xterm\\|rxvt"
       """ use an orange cursor in insert mode
