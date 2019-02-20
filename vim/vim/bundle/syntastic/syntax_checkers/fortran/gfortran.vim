@@ -1,6 +1,6 @@
 "============================================================================
 "File:        fortran.vim
-"Description: Syntax checking plugin for syntastic.vim
+"Description: Syntax checking plugin for syntastic
 "Maintainer:  Karl Yngve Lervåg <karl.yngve@lervag.net>
 "License:     This program is free software. It comes without any warranty,
 "             to the extent permitted by applicable law. You can redistribute
@@ -44,8 +44,8 @@ function! SyntaxCheckers_fortran_gfortran_GetLocList() dict " {{{1
         let errorformat =
             \ '%-C %#,'.
             \ '%-C  %#%.%#,'.
-            \ '%A%f:%l.%c:,'.
-            \ '%Z%trror: %m,'.
+            \ '%A%f:%l%[.:]%c:,'.
+            \ '%Z%\m%\%%(Fatal %\)%\?%trror: %m,'.
             \ '%Z%tarning: %m,'.
             \ '%-G%.%#'
         if !exists('g:syntastic_fortran_gfortran_sort')
