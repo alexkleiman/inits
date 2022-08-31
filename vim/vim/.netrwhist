@@ -1,4 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/tmp'
-let g:netrw_dirhist_2='/Users/akleiman/stripe/pay-server'
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/akleiman/stripe/pay-server/amp/node_modules/@typescript-eslint/eslint-plugin'
+let g:netrw_dirhist_1='/Users/akleiman/stripe/pay-server/amp/node_modules/@typescript-eslint'
+let g:netrw_dirhist_0='/Users/akleiman/stripe/pay-server/amp/node_modules'
+let g:netrw_dirhist_9='/private/tmp'
+let g:netrw_dirhist_8='/Users/akleiman/stripe/zoolander/datasets/deploy/henson'
+let g:netrw_dirhist_7='/Users/akleiman/notes/deploy'
+let g:netrw_dirhist_6='/Users/akleiman/.nodenv/shims'
+let g:netrw_dirhist_5='/Users/akleiman/go/src/git.corp.stripe.com/stripe-internal/gocode/onboarding-srv/svctemplates/registrants/webhooks/templates'
+let g:netrw_dirhist_4='/Users/akleiman/go/src/git.corp.stripe.com/stripe-internal/gocode/onboarding-srv/svctemplates/registrants/webhooks'
+let g:netrw_dirhist_3='/Users/akleiman/notes/deploy/05-2021'

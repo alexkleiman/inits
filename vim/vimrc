@@ -19,6 +19,10 @@ execute pathogen#infect()
 
 " Plug
 call plug#begin('~/.vim/plugged')
+"Plug 'psf/black'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
 " turn on 256 colors
 " set t_Co=256
@@ -209,6 +213,10 @@ autocmd BufNewFile,BufRead *.tex set textwidth=80
 autocmd BufNewFile,BufRead *.txt set textwidth=80
 autocmd BufNewFile,BufRead README set textwidth=80
 
+" Autoformat python files.
+"autocmd BufWritePre *.py execute ':Black'
+"let g:black_linelength = 99
+
 set hlsearch
 
 set clipboard=unnamed
@@ -222,16 +230,6 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_whitelist = { '*': 1 }
 " toggle diagnostics on/off
 let g:ycm_show_diagnostics_ui = 0
-
-"conque
-let g:ConqueTerm_Color = 1
-let g:ConqueTerm_TERM = 'xterm'
-let g:ConqueTerm_ReadUnfocused = 1
-let g:ConqueTerm_InsertOnEnter = 1
-let g:ConqueTerm_CloseOnEnd = 1
-
-"conqueGDB
-let g:ConqueGdb_Leader = '\'
 
 "airline
 "turn off annoying whitespace detection
@@ -289,8 +287,6 @@ let g:tagbar_autofocus = 1
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 "fzf
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
 set rtp+=/usr/local/opt/fzf
 nnoremap <leader>t :FZF<cr>
 
